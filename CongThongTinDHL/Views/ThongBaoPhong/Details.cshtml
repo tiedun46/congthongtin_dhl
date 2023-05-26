@@ -1,0 +1,30 @@
+﻿@model CongThongTinDHL.Models.ThongBaoPhong
+
+@{
+    ViewData["Title"] = "Thông báo phòng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- about section start -->
+<div class="news_section layout_padding">
+    <div class="container">
+        <div class="news_section_2 bg-light">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="@Model.AnhTb" class="image_6" style="width:80%">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="news_taital_box mb-2">
+                        <p class="date_text">@Model.NgayDang</p>
+                        <h4 class="make_text">@Model.TenTb</h4>
+                        <h4 class="make_text">@Model.MaPhongNavigation.TenPhong</h4>
+                        <p class="lorem_text">@Model.MoTaNgan</p>
+                        <div>@Html.Raw(Model.MoChiTiet)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- about section end -->

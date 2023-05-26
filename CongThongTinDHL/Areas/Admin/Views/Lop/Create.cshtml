@@ -1,0 +1,49 @@
+﻿@model CongThongTinDHL.Models.Lop
+
+@{
+    ViewData["Title"] = "Thêm Lớp";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Thêm Mới</h1>
+
+<h4>Lớp</h4>
+<hr />
+<div class="row">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group col-md-4">
+            <label asp-for="MaLop" class="control-label">Mã Lớp</label>
+            <input asp-for="MaLop" class="form-control" />
+            <span asp-validation-for="MaLop" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="MaKhoa" class="control-label">Chọn Khoa</label>
+            <select asp-for="MaKhoa" class="form-control" asp-items="ViewBag.MaKhoa"></select>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="TenLop" class="control-label">Tên Lớp</label>
+            <input asp-for="TenLop" class="form-control" />
+            <span asp-validation-for="TenLop" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Siso" class="control-label">Sĩ Số</label>
+            <input asp-for="Siso" class="form-control" />
+            <span asp-validation-for="Siso" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-12">
+            <label asp-for="Ghichu" class="control-label">Ghi chú</label>
+            <textarea asp-for="Ghichu" class="form-control"></textarea>
+            <span asp-validation-for="Ghichu" class="text-danger"></span>
+        </div>
+        <div class="form-group mt-2 form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="Status" /> Hiển thị
+            </label>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Thêm" class="btn btn-primary" />
+            <a class="btn btn-light m-1" asp-action="Index">Quay lại</a>
+        </div>
+    </form>
+</div>

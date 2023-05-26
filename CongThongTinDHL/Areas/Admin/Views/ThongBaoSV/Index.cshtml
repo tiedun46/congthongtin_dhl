@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CongThongTinDHL.Models.ThongBaoSv>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Danh Sách Thông Báo Sinh Viên</h1>
+
+<p>
+    <a class="btn btn-secondary" asp-action="Create">Thêm</a>
+</p>
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Ảnh
+            </th>
+            <th>
+                Tên Thông Báo
+            </th>
+            <th>
+                Mô Tả Ngắn
+            </th>
+
+            <th>
+                Ngày Đăng
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnhTb)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenTb)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MoTaNgan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDang)
+                </td>
+                <td>
+                    @if (item.Status == true)
+                    {
+                        <p>Hiển thị</p>
+                    }
+                    @if (item.Status == false)
+                    {
+                        <p>Đã tắt</p>
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-primary m-1" asp-action="Edit" asp-route-id="@item.MaTbsv">Sửa</a>
+                    <a class="btn btn-danger m-1" asp-action="Delete" asp-route-id="@item.MaTbsv">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

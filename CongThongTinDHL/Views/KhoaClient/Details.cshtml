@@ -1,0 +1,32 @@
+﻿@model CongThongTinDHL.Models.Khoa
+
+@{
+    ViewData["Title"] = Model.TenKhoa;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- about section start -->
+<div class="news_section layout_padding">
+    <div class="container">
+        <div class="news_section_2 bg-light">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="@Model.AvatarKhoa" class="image_6" style="width:80%">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="news_taital_box mb-2">
+                        <h4 class="make_text">@Model.TenKhoa</h4>
+                        <h4 class="make_text">Email: @Model.EmailKhoa</h4>
+                        <h4 class="make_text">Điện thoại: @Model.Sdtkhoa</h4>
+                        <h4 class="make_text">Số giảng viên: @Model.SoGv</h4>
+                        <h4 class="make_text">Số sinh viên: @Model.SoGv</h4>
+                        <div>@Html.Raw(Model.MucTieu)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- about section end -->

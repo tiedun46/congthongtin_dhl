@@ -1,0 +1,46 @@
+﻿@model CongThongTinDHL.Models.GioiThieu
+
+@{
+    ViewData["Title"] = "Xóa bài viết";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Xóa Bài Viết</h1>
+
+<h3>Bạn có chắc muốn xóa bài viết không?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Tên Bài Viết
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenGt)
+        </dd>
+        <dt class = "col-sm-2">
+            Ảnh
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="@Model.Anh"/>
+        </dd>
+        <dt class = "col-sm-2">
+            Mô tả ngắn
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MoTaNgan)
+        </dd>
+        
+        <dt class = "col-sm-2">
+            Ngày đăng
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="MaGt" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a class="btn btn-light m-1" asp-action="Index">Quay lại</a>
+    </form>
+</div>

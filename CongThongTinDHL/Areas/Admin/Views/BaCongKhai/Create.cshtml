@@ -1,0 +1,69 @@
+﻿@model CongThongTinDHL.Models.BaCongKhai
+
+@{
+    ViewData["Title"] = "Thêm Ba Công Khai";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+   
+}
+
+<h1>Thêm mới</h1>
+
+<h4>Ba Công Khai</h4>
+<hr />
+<div class="row">
+        <form method="post" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group col-lg-6">
+                <label asp-for="MaBck" class="control-label">Mã Ba Công Khai</label>
+                <input asp-for="MaBck" class="form-control" />
+                <span asp-validation-for="MaBck" class="text-danger"></span>
+            </div>
+            <div class="form-group col-lg-6">
+                <label asp-for="TenBck" class="control-label">Tên Ba Công Khai</label>
+                <input asp-for="TenBck" class="form-control" />
+                <span asp-validation-for="TenBck" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Link" class="control-label">Link</label>
+                <input asp-for="Link" class="form-control" />
+                <span asp-validation-for="Link" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-8">
+                <label asp-for="MoTaNgan" class="control-label">Mô tả ngắn</label>
+                <textarea asp-for="MoTaNgan" class="form-control"></textarea>
+                <span asp-validation-for="MoTaNgan" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-12 mt-2">
+                <label asp-for="MoChiTiet" class="control-label">Mô tả chi tiết</label>
+                <textarea asp-for="MoChiTiet" id="summernote"></textarea>
+                <span asp-validation-for="MoChiTiet" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2 form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Status" /> Hiển thị
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a class="btn btn-light m-1" asp-action="Index">Quay lại</a>
+            </div>
+        </form>
+    </div>
+
+
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Nhập thông tin...',
+        tabsize: 2,
+        height: 400,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>

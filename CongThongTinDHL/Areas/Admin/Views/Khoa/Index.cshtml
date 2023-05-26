@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CongThongTinDHL.Models.Khoa>
+
+@{
+    ViewData["Title"] = "Quản Lý Khoa";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Danh Sách Khoa</h1>
+
+<p>
+    <a class="btn btn-secondary" asp-action="Create">Thêm</a>
+</p>
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Ảnh khoa</th>
+            <th>Tên khoa</th>
+            <th>Email</th>
+            <th>Số Điện Thoại</th>
+            <th>Trạng thái</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@item.AvatarKhoa" width="60" />
+                </td>
+                <td>
+                    @item.TenKhoa
+                </td>
+                <td>
+                    @item.EmailKhoa
+                </td>
+                <td>
+                    @item.Sdtkhoa
+                </td>
+                <td>
+                    @if (item.Status == true)
+                    {
+                        <p>Hiển thị</p>
+                    }
+                    @if (item.Status == false)
+                    {
+                        <p>Đã tắt</p>
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-primary m-1" asp-action="Edit" asp-route-id="@item.MaKhoa">Sửa</a>
+                    @*<a class="btn btn-danger m-1" asp-action="Delete" asp-route-id="@item.MaKhoa">Xóa</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

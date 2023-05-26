@@ -1,0 +1,36 @@
+﻿@model CongThongTinDHL.Models.CoCauToChuc
+
+@{
+    ViewData["Title"] = Model.TenTc;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if(Model != null){
+    <!-- about section start -->
+    <div class="news_section layout_padding">
+        <div class="container">
+            <div class="news_section_2 bg-light">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="make_text">@Model.TenTc</h4>
+                        <img src="@Model.Anh" class="image_6" style="width:80%">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="news_taital_box mb-2">
+                            <p class="date_text">@Model.NgayDang</p>
+                            
+                            <p class="lorem_text">@Model.MoTaNgan</p>
+                            <div>@Html.Raw(Model.MoChiTiet)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- about section end -->
+} else{
+    <h2>Không có dữ liệu</h2>
+}

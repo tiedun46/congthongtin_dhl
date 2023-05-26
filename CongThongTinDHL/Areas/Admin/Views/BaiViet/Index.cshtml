@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CongThongTinDHL.Models.BaiViet>
+
+@{
+    ViewData["Title"] = "Quản Lý Bài Viết";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Danh Sách Bài Viết</h1>
+
+<p>
+    <a class="btn btn-secondary" asp-action="Create">Thêm</a>
+</p>
+
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Ảnh bài viết</th>
+            <th>Tên bài viết</th>
+            <th>Chủ đề</th>
+            <th>Ngày đăng</th>
+            <th>Trạng thái</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@item.AnhBv" width="60" />
+                </td>
+                <td>
+                    @item.TenBv
+                </td>
+                <td>
+                    @item.MaChuDeNavigation.TenCd
+                </td>
+                <td>
+                    @item.NgayDang
+                </td>
+                <td>
+                    @if (item.Status == true)
+                    {
+                        <p>Hiển thị</p>
+                    }
+                    @if (item.Status == false)
+                    {
+                        <p>Đã tắt</p>
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-primary m-1" asp-action="Edit" asp-route-id="@item.MaBv">Sửa</a>
+                    <a class="btn btn-danger m-1" asp-action="Delete" asp-route-id="@item.MaBv">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

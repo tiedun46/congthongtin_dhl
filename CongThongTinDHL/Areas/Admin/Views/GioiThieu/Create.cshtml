@@ -1,0 +1,89 @@
+﻿@model CongThongTinDHL.Models.GioiThieu
+
+@{
+    ViewData["Title"] = "Thêm bài giới thiệu";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Thêm Mới</h1>
+
+<h4>Bài Giới Thiệu</h4>
+<hr />
+<div class="row">
+    <form method="post" enctype="multipart/form-data" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col-md-12 row">
+            <div class="form-group col-md-6">
+                <img id="image-preview" src="#" alt="" width="200">
+            </div>
+            <div class="form-group col-md-12">
+                <label class="control-label">Chọn Ảnh Bài Viết</label>
+                <input asp-for="ChoosePhoto" id="input-file" class="form-control" />
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="MaGt" class="control-label">Mã bài giới thiệu</label>
+                <input asp-for="MaGt" class="form-control" />
+                <span asp-validation-for="MaGt" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="TenGt" class="control-label">Tên bài</label>
+                <input asp-for="TenGt" class="form-control" />
+                <span asp-validation-for="TenGt" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-8">
+                <label asp-for="MoTaNgan" class="control-label">Mô tả ngắn</label>
+                <textarea asp-for="MoTaNgan" class="form-control"></textarea>
+                <span asp-validation-for="MoTaNgan" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-12">
+                <label asp-for="MoChiTiet" class="control-label">Mô tả chi tiết</label>
+                <textarea asp-for="MoChiTiet" id="summernote" class="form-control"></textarea>
+                <span asp-validation-for="MoChiTiet" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2 form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Status" /> Hiển thị
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Thêm Mới" class="btn btn-primary" />
+                <a class="btn btn-light m-1" asp-action="Index">Quay lại</a>
+            </div>
+        </div>
+        </form>
+    </div>
+
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Nhập thông tin...',
+        tabsize: 2,
+        height: 400,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>
+<script>
+    const inputFile = document.getElementById("input-file");
+    const imagePreview = document.getElementById("image-preview");
+
+    inputFile.addEventListener("change", function () {
+        const file = this.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                imagePreview.setAttribute("src", this.result);
+            });
+
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

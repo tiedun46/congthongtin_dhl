@@ -1,0 +1,159 @@
+﻿@model CongThongTinDHL.Models.GiangVien
+
+@{
+    ViewData["Title"] = "Sửa Thông Tin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-content">
+    <!-- Page content -->
+    <div class="container-fluid mt--7">
+        <div class="row">
+            <div class="col-xl-12 order-xl-1">
+                <div class="card bg-secondary shadow">
+                    <div class="card-header bg-white border-0">
+                        <div class="row align-items-center">
+                            <div class="col-8">
+                                <h3 class="mb-0">Tài Khoản Của Bạn</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body bg-white">
+                        <form class="bg-white" method="post" enctype="multipart/form-data" asp-action="Edit" asp-controller="SinhVienDashboard">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="MaGv" />
+                            <input type="hidden" asp-for="MaKhoa" />
+                            <input type="hidden" asp-for="PasswordGv" />
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <img id="image-preview" src="@Model.AnhGv" alt="" width="200">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label">Chọn Ảnh Sinh Viên</label>
+                                        <input asp-for="ChoosePhoto" id="input-file" class="form-control" />
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" for="input-username">Mã GV</label>
+                                            <input type="text" value="@Model.MaGv" disabled class="form-control form-control-alternative">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" for="input-username">Khoa</label>
+                                            <input type="text" value="@Model.MaKhoa" disabled class="form-control form-control-alternative">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label asp-for="GioiTinh" class="control-label">Giới Tính</label>
+                                            <input type="text" asp-for="GioiTinh" class="form-control form-control-alternative">
+                                        </div>
+                                    </div><br />
+                                    <div class="col-lg-6">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" asp-for="HoTen">Họ Tên</label>
+                                            <input type="text" asp-for="HoTen" class="form-control form-control-alternative">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" asp-for="NgaySinh">Ngày Sinh</label>
+                                            <input asp-for="NgaySinh" class="form-control form-control-alternative">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="my-4">
+                            <!-- Address -->
+                            <h6 class="heading-small text-muted mb-4">Liên Hệ</h6>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" asp-for="Email">Email</label>
+                                            <input asp-for="Email" class="form-control form-control-alternative">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" asp-for="Sdt">Điện thoại</label>
+                                            <input asp-for="Sdt" type="number" class="form-control form-control-alternative">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" asp-for="DiaChi">Địa chỉ</label>
+                                            <input asp-for="DiaChi" class="form-control form-control-alternative">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group focused">
+                                            <label asp-for="NoiSinh" class="form-control-label">Nơi sinh</label>
+                                            <input asp-for="NoiSinh" class="form-control form-control-alternative">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group focused">
+                                            <label asp-for="Cmnd" class="form-control-label">CMND</label>
+                                            <input asp-for="Cmnd" type="number" class="form-control form-control-alternative">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group focused">
+                                            <label asp-for="DanToc" class="form-control-label">Dân tộc</label>
+                                            <input asp-for="DanToc" class="form-control form-control-alternative">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" asp-for="TonGiao">Tôn giáo</label>
+                                            <input asp-for="TonGiao" class="form-control form-control-alternative">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label class="form-control-label" asp-for="QuocTich">Quốc tịch</label>
+                                            <input asp-for="QuocTich" class="form-control form-control-alternative">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="my-4">
+                            <!-- Description -->
+                            <div class="pl-lg-4">
+                                <div class="form-group focused">
+                                    <button type="submit" class="btn btn-success">Lưu</button>
+                                    <a asp-action="ChangPassWordSV" asp-controller="GiangVienDashboard" class="btn btn-primary text-white">Đổi Mật Khẩu</a>
+                                    <a asp-action="Logout" asp-controller="Home" class="btn btn-danger text-white">Đăng Xuất</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const inputFile = document.getElementById("input-file");
+    const imagePreview = document.getElementById("image-preview");
+
+    inputFile.addEventListener("change", function () {
+        const file = this.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                imagePreview.setAttribute("src", this.result);
+            });
+
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

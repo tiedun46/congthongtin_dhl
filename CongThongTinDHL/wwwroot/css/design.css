@@ -1,0 +1,45 @@
+﻿.ul-nav {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #e7e7f6;
+}
+
+.ul-nav a {
+    color: black;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.ul-nav a:hover {
+    background-color: #DCDCDC;
+}
+
+.nav-item:hover .ul-nav {
+    display: block;
+}
+
+.header_section {
+    width: 100%;
+    float: left;
+    height: auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    background-image: url(https://th.bing.com/th/id/R.1a8dea3e15793e198cebe665162148ca?rik=AguJODsxVprSJQ&riu=http%3a%2f%2feskipaper.com%2fimages%2fbackground-wallpaper-20.jpg&ehk=KL7k4TVXP4%2blvF6RUTNWXQi3Si5Ja%2bBHQFBhuHMj2bw%3d&risl=&pid=ImgRaw&r=0);
+}
+
+
+.blog_section_2 {
+    margin-right: 5px;
+    margin-top: 5px;
+    border: none;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+.blog_list {
+    background-color: #fff !important;
+    padding: 15px !important;
+    border-radius: 6px !important;
+}

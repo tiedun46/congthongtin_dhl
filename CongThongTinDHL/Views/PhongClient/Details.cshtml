@@ -1,0 +1,24 @@
+﻿@model CongThongTinDHL.Models.Phong
+
+@{
+    ViewData["Title"] = Model.TenPhong;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- about section start -->
+<div class="news_section layout_padding">
+    <div class="container">
+        <div class="news_section_2 bg-light">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="news_taital_box mb-2">
+                        <h4 class="make_text">@Model.TenPhong</h4>
+                        <p class="lorem_text">Số nhân sự: @Model.NhanSu</p>
+                        <h4 class="make_text">@Html.Raw(Model.NhiemVu)</h4>>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- about section end -->

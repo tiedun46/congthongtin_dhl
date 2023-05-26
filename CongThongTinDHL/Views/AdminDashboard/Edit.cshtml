@@ -1,0 +1,87 @@
+﻿@model CongThongTinDHL.Models.Admin
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Thông Tin Tài Khoản</h1>
+<hr />
+        <form method="post" enctype="multipart/form-data" asp-action="Edit">
+<div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MaAdmin" />
+            <div class="form-group col-md-12">
+                <img id="image-preview" src="@Model.AvatarAd" alt="" width="200">
+            </div>
+            <div class="form-group col-md-12">
+                <label class="control-label">Chọn Ảnh Đại Diện</label>
+                <input asp-for="ChoosePhoto" id="input-file" class="form-control" />
+            </div>
+        <div class="form-group col-md-6">
+                <label asp-for="UsernameAd" class="control-label"></label>
+                <input asp-for="UsernameAd" class="form-control" />
+                <span asp-validation-for="UsernameAd" class="text-danger"></span>
+            </div>
+        <div class="form-group col-md-6">
+                <label asp-for="Fullname" class="control-label">Họ Tên</label>
+                <input asp-for="Fullname" class="form-control" />
+                <span asp-validation-for="Fullname" class="text-danger"></span>
+            </div>
+        <div class="form-group col-md-6">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        <div class="form-group col-md-6">
+                <label asp-for="Sdt" class="control-label">Điện thoại</label>
+                <input asp-for="Sdt" class="form-control" />
+                <span asp-validation-for="Sdt" class="text-danger"></span>
+            </div>
+        <div class="form-group col-md-6">
+                <label asp-for="DiaChi" class="control-label">Địa chỉ</label>
+                <input asp-for="DiaChi" class="form-control" />
+                <span asp-validation-for="DiaChi" class="text-danger"></span>
+            </div>
+        <div class="form-group col-md-6">
+                <label asp-for="DanToc" class="control-label">Dân tộc</label>
+                <input asp-for="DanToc" class="form-control" />
+                <span asp-validation-for="DanToc" class="text-danger"></span>
+            </div>
+        <div class="form-group col-md-6">
+                <label asp-for="TonGiao" class="control-label">Tôn giáo</label>
+                <input asp-for="TonGiao" class="form-control" />
+                <span asp-validation-for="TonGiao" class="text-danger"></span>
+            </div>
+        <div class="form-group col-md-6">
+                <label asp-for="QuocTich" class="control-label">Quốc tịch</label>
+                <input asp-for="QuocTich" class="form-control" />
+                <span asp-validation-for="QuocTich" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <input type="submit" value="Lưu" class="btn btn-primary" />
+            <a class="btn btn-danger" asp-action="ChangPassWordAdmin" asp-controller="AdminDashboard">Đổi Mật Khẩu</a>
+            <a class="btn btn-secondary" asp-action="Index" asp-controller="Home" asp-area="Admin">Quay Lại</a>
+            </div>
+        </div>
+       </form>
+
+
+<script>
+    const inputFile = document.getElementById("input-file");
+    const imagePreview = document.getElementById("image-preview");
+
+    inputFile.addEventListener("change", function () {
+        const file = this.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                imagePreview.setAttribute("src", this.result);
+            });
+
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

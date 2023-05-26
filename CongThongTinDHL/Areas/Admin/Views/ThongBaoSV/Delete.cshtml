@@ -1,0 +1,58 @@
+﻿@model CongThongTinDHL.Models.ThongBaoSv
+
+@{
+    ViewData["Title"] = "Xóa Thông Báo";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Xóa Thông Báo</h1>
+
+<h3>Bạn có chắc muốn xóa thông báo này?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+           Tên thông báo
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenTb)
+        </dd>
+        <dt class = "col-sm-2">
+            Ảnh
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="@Model.AnhTb" alt="" width="100"/>
+        </dd>
+        <dt class = "col-sm-2">
+            Mô tả ngắn
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MoTaNgan)
+        </dd>
+        <dt class = "col-sm-2">
+            Ngày đăng
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+        <dt class = "col-sm-2">
+            Trạng thái
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.Status == true)
+                {
+                    <p>Hiển thị</p>
+                }
+                @if (Model.Status == false)
+                {
+                    <p>Đã tắt</p>
+                }
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="MaTbsv" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a class="btn btn-light m-1" asp-action="Index">Quay lại</a>
+    </form>
+</div>

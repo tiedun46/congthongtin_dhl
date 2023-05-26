@@ -1,0 +1,47 @@
+﻿@model CongThongTinDHL.Models.Logo
+
+@{
+    ViewData["Title"] = "Xóa Logo";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Xóa Logo</h1>
+
+<h3>Bạn chắc chắn muốn xóa không?</h3>
+<div>
+    <h4>Logo</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Ảnh Logo
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="@Model.AvatarLogo" width="100" />
+        </dd>
+        <dt class = "col-sm-2">
+            Ngày Tạo
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.NgayTao
+        </dd>
+        <dt class = "col-sm-2">
+            Trạng Thái
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.Status == true)
+            {
+                <p>Hiển thị</p>
+            }
+            @if (Model.Status == false)
+            {
+                <p>Đã tắt</p>
+            }
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="MaLogo" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a class="btn btn-light m-1" asp-action="Index">Quay Lại</a>
+    </form>
+</div>

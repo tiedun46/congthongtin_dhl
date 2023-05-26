@@ -1,0 +1,154 @@
+﻿
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    CongThongTinDHL.Models.CongTTDHLuatContext db = new CongThongTinDHL.Models.CongTTDHLuatContext();
+    var banners = db.Banners;
+    var chuDe = db.ChuDes;
+    var logo = db.Logos;
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h4>Danh Sách Chủ Đề</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Tên Chủ Đề
+                    </th>
+                    <th>
+                        Ghi Chú
+                    </th>
+                    <th>
+                        Trạng Thái
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in chuDe)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenCd)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GhiChu)
+                        </td>
+                        <td>
+                            @if (item.Status == true)
+                            {
+                                <p>Hiển thị</p>
+                            }
+                            @if (item.Status == false)
+                            {
+                                <p>Đã tắt</p>
+                            }
+                        </td>
+                        <td>
+                            <a class="btn btn-primary m-1" asp-action="Edit" asp-route-id="@item.MaChuDe">Sửa</a>
+                            <a class="btn btn-danger m-1" asp-action="Delete" asp-route-id="@item.MaChuDe">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    <hr />
+    </div>
+    <div class="col-lg-6">
+        <h4>Danh Sách Banner</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Ảnh Banner
+                    </th>
+                    <th>
+                        Tên Banner
+                    </th>
+                    <th>
+                        Ngày tạo
+                    </th>
+                    <th>
+                        Trạng thái
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in banners)
+                {
+                    <tr>
+                        <td>
+                            <img src="@item.AnhBanner" width="60" />
+                        </td>
+                        <td>
+                            @item.TenBanner
+                        </td>
+                        <td>
+                            @item.NgayTao
+                        </td>
+                        <td>
+                            @if (item.Status == true)
+                            {
+                                <p>Hiển thị</p>
+                            }
+                            @if (item.Status == false)
+                            {
+                                <p>Đã tắt</p>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-6">
+        <h4>Danh Sách Logo</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Ảnh Logo
+                    </th>
+                    <th>
+                        Ngày tạo
+                    </th>
+                    <th>
+                        Trạng thái
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in logo)
+                {
+                    <tr>
+                        <td>
+                            <img src="@item.AvatarLogo" width="60" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayTao)
+                        </td>
+                        <td>
+                            @if (item.Status == true)
+                            {
+                                <p>Hiển thị</p>
+                            }
+                            @if (item.Status == false)
+                            {
+                                <p>Đã tắt</p>
+                            }
+                        </td>
+                        <td>
+                            <a class="btn btn-primary m-1" asp-action="Edit" asp-route-id="@item.MaLogo">Sửa</a>
+                            <a class="btn btn-danger m-1" asp-action="Delete" asp-route-id="@item.MaLogo">Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+    </div>
+    <hr />
+</div>

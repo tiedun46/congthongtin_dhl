@@ -1,0 +1,65 @@
+﻿@model CongThongTinDHL.Models.BaCongKhai
+
+@{
+    ViewData["Title"] = "Xóa thông tin";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Xóa Ba Công Khai</h1>
+
+<h3>Bạn có chắc muốn xóa thông tin không?</h3>
+<div>
+    <h4>Ba Công Khai</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Tên Ba Công Khai
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenBck)
+        </dd>
+        <dt class = "col-sm-2">
+            Link (Nếu có)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+        <dt class = "col-sm-2">
+            Mô tả ngắn
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MoTaNgan)
+        </dd>
+        <dt class = "col-sm-2">
+            Mô tả chi tiết
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.Raw(Model.MoChiTiet)
+        </dd>
+        <dt class = "col-sm-2">
+            Ngày đăng
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+        <dt class = "col-sm-2">
+            Trạng thái
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.Status == true)
+            {
+                <p>Hiển thị</p>
+            }
+            @if (Model.Status == false)
+            {
+                <p>Đã tắt</p>
+            }
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="MaBck" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a class="btn btn-light m-1" asp-action="Index">Quay lại</a>
+    </form>
+</div>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CongThongTinDHL.Models.ChuDe>
+
+@{
+    ViewData["Title"] = "Quản Lý Chủ Đề";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Danh Sách Chủ Đề</h1>
+
+<p>
+    <a class="btn btn-secondary" asp-action="Create">Thêm</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tên Chủ Đề
+            </th>
+            <th>
+                Ghi Chú
+            </th>
+            <th>
+                Trạng Thái
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenCd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GhiChu)
+            </td>
+            <td>
+                    @if (item.Status == true)
+                    {
+                        <p>Hiển thị</p>
+                    }
+                    @if (item.Status == false)
+                    {
+                        <p>Đã tắt</p>
+                    }
+            </td>
+            <td>
+                    <a class="btn btn-primary m-1" asp-action="Edit" asp-route-id="@item.MaChuDe">Sửa</a>
+                    <a class="btn btn-danger m-1" asp-action="Delete" asp-route-id="@item.MaChuDe">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

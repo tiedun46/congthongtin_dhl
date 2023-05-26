@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CongThongTinDHL.Models.Banner>
+
+@{
+    ViewData["Title"] = "Quản Lý Banner";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Danh Sách Banner</h1>
+
+<p>
+    <a class="btn btn-secondary" asp-action="Create">Thêm</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Ảnh Banner
+            </th>
+            <th>
+                Tên Banner
+            </th>
+            <th>
+                Ngày tạo
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th>
+                Link
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+              <img src="@item.AnhBanner" width="60" />
+            </td>
+            <td>
+                @item.TenBanner
+            </td>
+            <td>
+                @item.NgayTao
+            </td>
+            <td>
+                    @if (item.Status == true)
+                    {
+                        <p>Hiển thị</p>
+                    }
+                    @if (item.Status == false)
+                    {
+                        <p>Đã tắt</p>
+                    }
+            </td>
+            <td>
+                @item.Link
+            </td>
+            <td>
+                <a class="btn btn-primary m-1" asp-action="Edit" asp-route-id="@item.MaBanner">Sửa</a>
+                <a class="btn btn-danger m-1" asp-action="Delete" asp-route-id="@item.MaBanner">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

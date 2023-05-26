@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CongThongTinDHL.Models.BaiViet>
+
+@{
+    var item1 = Model.FirstOrDefault(x => x.Status == true);
+    if (item1 != null) { ViewData["Title"] = item1.MaChuDeNavigation.TenCd; }
+    else
+    {
+        ViewData["Title"] = "Danh sách bài viết";
+    }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if(Model != null){
+    <!-- blog section start -->
+    <div class="blog_section layout_padding">
+        <div class="container">
+            @if (item1 != null)
+            {
+                  <h1 class="news_taital">Danh Sách @item1.MaChuDeNavigation.TenCd</h1>
+                <p class="news_text">Cập nhật liên tục các thông tin trong ngày.</p>
+            }
+            else
+            {
+
+            <p class="news_text">Chưa có dữ liệu.</p>
+            }
+            <div class="list_blog_1 row">
+                @foreach (var item in Model)
+                {
+                    <div class="blog_section_2 col-md-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img src="@item.AnhBv" class="image_7" style="width:100%">
+                            </div>
+                            <div class="col-md-12">
+                                <a asp-action="Details" asp-route-id="@item.MaBv">
+                                    <b>@item.TenBv</b>
+                                    <p class="ipsum_text">@item.MoTaNgan</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- blog section end -->
+}

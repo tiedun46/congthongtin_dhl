@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CongThongTinDHL.Models.Phong>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenPhong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NhanSu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NhiemVu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenPhong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanSu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhiemVu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaPhong">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MaPhong">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaPhong">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

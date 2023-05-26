@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CongThongTinDHL.Models.QuyDinhSv>
+
+@{
+    ViewData["Title"] = "Quản Lý Quy Định Sinh Viên";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Quy Định Sinh Viên</h1>
+
+<p>
+    <a class="btn btn-secondary" asp-action="Create">Thêm</a>
+</p>
+<table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Tên Quy Định
+            </th>
+            <th>
+                Mô tả ngắn
+            </th>
+            <th>
+                Ngày đăng
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenQd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTaNgan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDang)
+            </td>
+            <td>
+                @if (item.Status == true)
+                {
+                    <p>Hiển thị</p>
+                }
+                @if (item.Status == false)
+                {
+                    <p>Đã tắt</p>
+                }
+            </td>
+            <td>
+                    <a class="btn btn-primary m-1" asp-action="Edit" asp-route-id="@item.MaQdsv">Sửa</a>
+                    <a class="btn btn-danger m-1" asp-action="Delete" asp-route-id="@item.MaQdsv">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

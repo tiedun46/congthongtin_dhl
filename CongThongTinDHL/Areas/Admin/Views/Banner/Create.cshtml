@@ -1,0 +1,48 @@
+﻿@model CongThongTinDHL.Models.Banner
+
+@{
+    ViewData["Title"] = "Thêm Banner";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Thêm Mới</h1>
+
+<h4>Banner</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Chọn Banner</label>
+                <input asp-for="ChoosePhoto" class="form-control" />
+            </div>
+            <div class="form-group mt-2 form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Status" /> Hiển thị
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Link" class="control-label">Nhập Link</label>
+                <input asp-for="Link" class="form-control" />
+                <span asp-validation-for="Link" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenBanner" class="control-label">Tên Banner</label>
+                <input asp-for="TenBanner" class="form-control" />
+                <span asp-validation-for="TenBanner" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoTaNgan" class="control-label">Mô tả ngắn</label>
+                <input asp-for="MoTaNgan" class="form-control" />
+                <span asp-validation-for="MoTaNgan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a class="btn btn-light m-1" asp-action="Index">Quay Lại</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

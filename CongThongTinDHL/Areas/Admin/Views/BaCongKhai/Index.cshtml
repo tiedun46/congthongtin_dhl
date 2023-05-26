@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CongThongTinDHL.Models.BaCongKhai>
+
+@{
+    ViewData["Title"] = "Quản Lý Ba Công Khai";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Danh Sách Ba Công Khai</h1>
+
+<p>
+    <a class="btn btn-secondary" asp-action="Create">Thêm</a>
+</p>
+
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Mã BCK</th>
+                <th>Tên Ba Công Khai</th>
+                <th>Mô tả ngắn</th>
+                <th>Ngày đăng</th>
+                <th>Trạng thái</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.MaBck
+                    </td>
+                    <td>
+                        @item.TenBck
+                    </td>
+                    <td>
+                        @item.MoTaNgan
+                    </td>
+                    <td>
+                        @item.NgayDang
+                    </td>
+                    <td>
+                        @if (item.Status == true)
+                        {
+                            <p>Hiển thị</p>
+                        }
+                        @if (item.Status == false)
+                        {
+                            <p>Đã tắt</p>
+                        }
+                    </td>
+                    <td>
+                        <a class="btn btn-primary m-1" asp-action="Edit" asp-route-id="@item.MaBck">Sửa</a>
+                        <a class="btn btn-danger m-1" asp-action="Delete" asp-route-id="@item.MaBck">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

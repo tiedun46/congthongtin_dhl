@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CongThongTinDHL.Models.GioiThieu>
+
+@{
+    ViewData["Title"] = "Giới Thiệu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if(Model !=null){
+    <!-- blog section start -->
+    <div class="blog_section layout_padding">
+        <div class="container">
+            <h1 class="news_taital">Danh Sách Bài Viết</h1>
+            <p class="news_text">Cập nhật liên tục các thông tin trong ngày.</p>
+            <div class="list_blog_1 row">
+                @foreach (var item in Model)
+                {
+                    <div class="blog_section_2 col-md-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img src="@item.Anh" class="image_7" style="width:100%">
+                            </div>
+                            <div class="col-md-12">
+                                <a asp-action="Details" asp-route-id="@item.MaGt">
+                                    <b>@item.TenGt</b>
+                                    <p class="ipsum_text">@item.MoTaNgan</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- blog section end -->
+} else {
+    <h4>Chưa có bài viết</h4>
+}
